@@ -1,8 +1,8 @@
-# **Investment Simulator App**
+### **Investment Simulator App**
 
 ### **Overview**
 
-The Investment Simulator App allows users to create and manage simulated investment portfolios by trading stocks in real-time or simulated market conditions. Users can track performance, view analytics, and compete in challenges. This application showcases full-stack development using Python for the backend and integrates cloud services for scalability and security.
+The Investment Simulator App allows users to create and manage simulated investment portfolios by trading stocks in real-time or simulated market conditions. Users can track performance, view analytics, and compete in challenges. This application showcases full-stack development using Python for the backend and integrates cloud services for scalability and security; also includes machine learning features such as stock price prediction and trade recommendation systems.
 
 ---
 
@@ -15,6 +15,16 @@ The Investment Simulator App allows users to create and manage simulated investm
 - **Real-Time Market Data**
   - Fetch real-time stock market data via an external API (e.g., [Alpha Vantage](https://www.alphavantage.co/), [IEX Cloud](https://iexcloud.io/)).
   - Users can view current and historical stock prices.
+
+- **Stock Price Prediction**
+  - Predict future stock prices based on historical data using machine learning models.
+  - Models such as Linear Regression and LSTM are used for time-series forecasting.
+  - Users can view stock price predictions alongside real-time data to assist in their trading decisions.
+
+- **Trade Recommendation System**
+  - Recommend trades based on user portfolio history and market trends.
+  - Use collaborative filtering or content-based filtering algorithms to personalize stock recommendations.
+  - Help users discover stocks that align with their investment preferences and portfolio performance.
 
 - **Portfolio Management**
   - Users can simulate trades (buy/sell) and view the impact on their portfolio.
@@ -33,63 +43,47 @@ The Investment Simulator App allows users to create and manage simulated investm
 ### **Tech Stack**
 
 #### **Backend (Python)**
+
 - **Flask**: For handling API requests and server-side logic.
 - **SQLAlchemy**: ORM for database interactions (using PostgreSQL or SQLite).
 - **Celery**: Task queue for handling background tasks (e.g., periodic market data fetching).
 - **Redis**: In-memory data store used with Celery for caching and background tasks.
 - **Alpha Vantage/IEX Cloud API**: For real-time and historical stock market data integration.
+- **scikit-learn** and **TensorFlow/Keras**: For developing stock price prediction models and trade recommendation systems.
 - **JWT Authentication**: For user authentication and security.
 
 #### **Frontend (Optional/Expandable)**
+
 - **React or Vue.js**: (If desired) For interactive user interfaces and charting.
 - **Chart.js**: For visualizing stock price trends, portfolio performance, and asset allocation.
-  
+
 #### **Database**
+
 - **PostgreSQL**: Primary database to store user accounts, portfolios, transactions, and historical data.
 - **Redis**: Used for caching stock data and improving application performance.
 
 #### **Cloud Infrastructure**
+
 - **AWS (or GCP/Azure)**: For hosting the backend and database.
   - **AWS Lambda**: (Optional) To handle certain serverless tasks like trade simulations.
   - **RDS (Relational Database Service)**: Scalable database solution for PostgreSQL.
   - **CloudWatch**: Monitoring the application’s health and performance.
-  
+
 #### **CI/CD Pipeline**
+
 - **GitHub Actions**: Automated testing and deployment pipeline.
 - **Docker**: Containerization of the app for easy deployment across different environments.
 
 #### **Security**
+
 - **HTTPS**: Secure communication between the client and server.
 - **AWS KMS**: Encrypt sensitive data such as user information and transactions.
 
 #### **Performance Optimization**
+
 - **Redis**: For caching API responses to reduce load on external data services.
 - **Artillery**: Load testing to ensure scalability and simulate thousands of concurrent users.
 
----
-
-### **Project Structure**
-
-```bash
-investment-simulator-app/
-│
-├── app/
-│   ├── __init__.py         # Initialize the Flask app
-│   ├── models.py           # Database models for user accounts, portfolios, etc.
-│   ├── routes.py           # API routes for trading, portfolio management, etc.
-│   └── services/
-│       ├── market_data.py   # Service for fetching real-time market data
-│       ├── portfolio.py     # Logic for managing portfolios and calculating performance
-│       └── tasks.py         # Celery tasks for background operations
-│
-├── tests/
-│   ├── test_app.py          # Unit tests for application functionality
-│
-├── Dockerfile               # Docker configuration
-├── docker-compose.yml       # Docker-Compose for local setup
-├── requirements.txt         # Project dependencies
-└── README.md                # Project overview (this file)
-```
 ---
 
 ### **How to Run Locally**
@@ -135,6 +129,8 @@ investment-simulator-app/
     celery -A app.tasks worker --loglevel=info
     ```
 
+---
+
 ### **How to Contribute**
 
 1. Fork the repository.  
@@ -143,8 +139,4 @@ investment-simulator-app/
 4. Push to the branch (`git push origin feature/your-feature`).  
 5. Open a Pull Request.
 
-### **Future Features (Roadmap)**
-
-- **Algorithmic Trading**: Allow users to build and backtest trading algorithms.  
-- **Machine Learning Models**: Integrate AI/ML to predict market trends or recommend trades.  
-- **Mobile App**: Build a mobile version of the app using React Native.
+---
